@@ -1,15 +1,16 @@
 package io.github.angeliquecarpo.inspectora.app;
-import io.github.angeliquecarpo.inspectora.crawl.HtmlFetcher;
-import org.jsoup.nodes.Document;
+import io.github.angeliquecarpo.inspectora.crawl.SiteCrawler;
+import java.util.Set;
+
 
 public class InspectoraApplication {
     public static void main(String[] args){
         System.out.println("Starting Inspectora...");
 
-        HtmlFetcher fetcher = new HtmlFetcher();
+        SiteCrawler crawler = new SiteCrawler();
 
-        Document document = fetcher.fetch("https://www.alamaras.gr/");
+        Set<String> urls = crawler.crawl("https://www.alamaras.gr/");
 
-        System.out.println(document.body().text());
+        System.out.println("Unique URLs: " + urls.size());
     }
 }
