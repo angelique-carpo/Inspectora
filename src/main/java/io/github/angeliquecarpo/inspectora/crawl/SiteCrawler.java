@@ -4,42 +4,95 @@ import io.github.angeliquecarpo.inspectora.analysis.ContentAnalyzer;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Set;
 
 public class SiteCrawler {
 
     public Set<String> crawl(String url) {
+
         System.out.println(">>> ΕΚΤΕΛΕΙΤΑΙ Η CRAWL <<<");
 
         HtmlFetcher fetcher = new HtmlFetcher();
-        ContentAnalyzer analyzer = new ContentAnalyzer();// Δημιουργία αντικειμένου του ContentAnalyzer
+        ContentAnalyzer analyzer = new ContentAnalyzer();
 
-        Document document = fetcher.fetch(url);// Κατέβασμα της αρχικής σελίδας
+        Queue<String> urlsToVisit = new LinkedList<>();
+        Set<String> visitedUrls = new HashSet<>();
 
-        Set<String> urls = new HashSet<>();
+        urlsToVisit.add(url);
 
-        for (Element link : document.select("a")) { // Εξαγωγή όλων των συνδέσμων (a tags)
-            urls.add(link.attr("abs:href"));
-        }
-        for (String currentUrl: urls){
-            if (!currentUrl.startsWith("https://www.alamaras.gr")) {// Φιλτράρισμα ώστε να ελέγχουμε μόνο το domain "alamaras.gr"
+        while (!urlsToVisit.isEmpty()) {
+
+            String currentUrl = urlsToVisit.poll();
+
+            if (visitedUrls.contains(currentUrl)) {
                 continue;
             }
 
-            System.out.println("Checking: " + currentUrl);
+            visitedUrls.add(currentUrl);
             Document currentDocument = fetcher.fetch(currentUrl);
 
-            int wordCount = analyzer.countWords(currentDocument); // Κλήση της μεθόδου words για το τρέχον έγγραφο
+            int wordCount = analyzer.countWords(currentDocument);
+            int imageCount = analyzer.countImages(currentDocument);
+            String status = analyzer.getPageStatus(wordCount, imageCount);
 
-            System.out.println("Title: " + currentDocument.title());
-            System.out.println("Words on page : " + wordCount);
-
-            if (wordCount < 150){
-                System.out.println("⚠ Thin Content");
-            }
-
+            System.out.println("Title   : " + currentDocument.title());
+            System.out.println("Words   : " + wordCount);
+            System.out.println("Images  : " + imageCount);
+            System.out.println("Status  : " + status);
             System.out.println("-----------------------------");
+
+            for (Element link : currentDocument.select("a")) {
+
+                String nextUrl = link.attr("abs:href");
+
+                if (nextUrl.isBlank()) {
+                    continue;
+                }
+
+                if (isNonHtmlResource(nextUrl)) {
+                    continue;
+                }
+
+                if (!nextUrl.startsWith("https://www.alamaras.gr")) {
+                    continue;
+                }
+
+                if (!visitedUrls.contains(nextUrl)) {
+                    urlsToVisit.add(nextUrl);
+                }
+            }
         }
-        return urls;
+
+        return visitedUrls;
+    }
+
+    private boolean isNonHtmlResource(String url) {
+
+        String lowerUrl = url.toLowerCase();
+
+        return lowerUrl.endsWith(".jpg")
+                || lowerUrl.endsWith(".jpeg")
+                || lowerUrl.endsWith(".png")
+                || lowerUrl.endsWith(".gif")
+                || lowerUrl.endsWith(".webp")
+                || lowerUrl.endsWith(".svg")
+                || lowerUrl.endsWith(".bmp")
+                || lowerUrl.endsWith(".ico")
+                || lowerUrl.endsWith(".pdf")
+                || lowerUrl.endsWith(".doc")
+                || lowerUrl.endsWith(".docx")
+                || lowerUrl.endsWith(".xls")
+                || lowerUrl.endsWith(".xlsx")
+                || lowerUrl.endsWith(".ppt")
+                || lowerUrl.endsWith(".pptx")
+                || lowerUrl.endsWith(".zip")
+                || lowerUrl.endsWith(".rar")
+                || lowerUrl.endsWith(".7z")
+                || lowerUrl.endsWith(".css")
+                || lowerUrl.endsWith(".js")
+                || lowerUrl.endsWith(".json")
+                || lowerUrl.endsWith(".xml");
     }
 }
