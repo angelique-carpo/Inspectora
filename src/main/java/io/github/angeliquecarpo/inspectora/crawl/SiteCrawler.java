@@ -1,6 +1,8 @@
 package io.github.angeliquecarpo.inspectora.crawl;
 
 import io.github.angeliquecarpo.inspectora.analysis.ContentAnalyzer;
+import io.github.angeliquecarpo.inspectora.report.ReportEntry;
+import io.github.angeliquecarpo.inspectora.report.ReportGenerator;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import java.util.HashSet;
@@ -16,6 +18,7 @@ public class SiteCrawler {
 
         HtmlFetcher fetcher = new HtmlFetcher();
         ContentAnalyzer analyzer = new ContentAnalyzer();
+        ReportGenerator reportGenerator = new ReportGenerator();
 
         Queue<String> urlsToVisit = new LinkedList<>();
         Set<String> visitedUrls = new HashSet<>();
@@ -36,12 +39,10 @@ public class SiteCrawler {
             int wordCount = analyzer.countWords(currentDocument);
             int imageCount = analyzer.countImages(currentDocument);
             String status = analyzer.getPageStatus(wordCount, imageCount);
+            boolean empty = wordCount <= 50;
 
-            System.out.println("Title   : " + currentDocument.title());
-            System.out.println("Words   : " + wordCount);
-            System.out.println("Images  : " + imageCount);
-            System.out.println("Status  : " + status);
-            System.out.println("-----------------------------");
+            ReportEntry entry = new ReportEntry(currentUrl, wordCount, status);
+            reportGenerator.addEntry(entry);
 
             for (Element link : currentDocument.select("a")) {
 
@@ -64,6 +65,7 @@ public class SiteCrawler {
                 }
             }
         }
+        reportGenerator.printReport();
 
         return visitedUrls;
     }
