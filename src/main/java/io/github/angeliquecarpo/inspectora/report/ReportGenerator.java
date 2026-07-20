@@ -12,20 +12,44 @@ public class ReportGenerator {
 
     public void printReport() {
 
+        int okCount = 0;
+        int thinCount = 0;
+        int veryThinCount = 0;
+        int emptyCount = 0;
+
+
+
+        for (ReportEntry entry : entries) {
+            switch(entry.getStatus()) {
+                case "OK":
+                    okCount++;
+                    break;
+
+                case "THIN CONTENT":
+                    thinCount++;
+                    break;
+
+                case "VERY THIN":
+                    veryThinCount++;
+                    break;
+
+                case "EMPTY":
+                    emptyCount++;
+                    break;
+            }
+        }
+
         System.out.println();
         System.out.println("=========================================");
         System.out.println("         INSPECTORA REPORT");
         System.out.println("=========================================");
-
-        for (ReportEntry entry : entries) {
-            System.out.printf("%-6d %-15s %s%n",
-                    entry.getWordCount(),
-                    entry.getStatus(),
-                    entry.getUrl());
-        }
-
-        System.out.println("-----------------------------------------");
+        System.out.println();
         System.out.println("Total pages : " + entries.size());
+        System.out.println("OK :" +  okCount);
+        System.out.println("THIN CONTENT : " + thinCount);
+        System.out.println("VERY THIN : " + veryThinCount);
+        System.out.println("EMPTY  : " + emptyCount);
+        System.out.println();
     }
 
 }

@@ -9,7 +9,7 @@ public class InspectoraApplication {
 
         SiteCrawler crawler = new SiteCrawler();
 
-        Set<String> urls = crawler.crawl("https://www.alamaras.gr/");
+        Set<String> urls = crawler.crawl("https://www.alamaras.gr/sitemap.html");
 
         System.out.println("Unique URLs: " + urls.size());
     }
