@@ -1,16 +1,27 @@
 package io.github.angeliquecarpo.inspectora.app;
 import io.github.angeliquecarpo.inspectora.crawl.SiteCrawler;
-import java.util.Set;
+import io.github.angeliquecarpo.inspectora.report.ReportEntry;
+import io.github.angeliquecarpo.inspectora.report.ReportGenerator;
+import java.util.List;
 
 
 public class InspectoraApplication {
-    public static void main(String[] args){
+    public static void main(String[] args) {
+
         System.out.println("Starting Inspectora...");
 
         SiteCrawler crawler = new SiteCrawler();
 
-        Set<String> urls = crawler.crawl("https://www.alamaras.gr/sitemap.html");
+        List<ReportEntry> reportEntries = crawler.crawl("https://www.alamaras.gr/sitemap.html");
 
-        System.out.println("Unique URLs: " + urls.size());
+        System.out.println("Total pages: " + reportEntries.size());
+
+        ReportGenerator reportGenerator = new ReportGenerator();
+
+        for (ReportEntry entry : reportEntries) {
+            reportGenerator.addEntry(entry);
+        }
+
+        reportGenerator.printReport();
     }
 }
