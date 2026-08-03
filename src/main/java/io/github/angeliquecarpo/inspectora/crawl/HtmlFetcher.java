@@ -10,7 +10,7 @@ public class HtmlFetcher {
 
     public Document fetch (String url){
 
-        Connection connection = Jsoup.connect(url);
+        Connection connection = Jsoup.connect(url).ignoreContentType(true);
         Document document = null;
         try{
             document = connection.get();
@@ -19,5 +19,15 @@ public class HtmlFetcher {
         }
 
         return document;
+    }
+
+    public Document fetchIfExists(String url){
+        Connection connection = Jsoup.connect(url).ignoreContentType(true);
+        try{
+            return connection.get();
+        }catch (IOException e){
+            return null;
+        }
+
     }
 }

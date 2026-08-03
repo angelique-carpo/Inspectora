@@ -44,12 +44,45 @@ public class ReportGenerator {
         System.out.println("         INSPECTORA REPORT");
         System.out.println("=========================================");
         System.out.println();
-        System.out.println("Total pages : " + entries.size());
-        System.out.println("OK :" +  okCount);
+        System.out.println("Total pages  : " + entries.size());
+        System.out.println("OK           :" +  okCount);
         System.out.println("THIN CONTENT : " + thinCount);
-        System.out.println("VERY THIN : " + veryThinCount);
-        System.out.println("EMPTY  : " + emptyCount);
+        System.out.println("VERY THIN    : " + veryThinCount);
+        System.out.println("EMPTY        : " + emptyCount);
         System.out.println();
+        System.out.println("=========================================");
+        System.out.println("EMPTY PAGES");
+        System.out.println("=========================================");
+
+        for (ReportEntry entry : entries) {
+            if (entry.getStatus().equals("EMPTY")) {
+                System.out.println(entry.getUrl());
+            }
+        }
+
+        System.out.println();
+
+        System.out.println("=========================================");
+        System.out.println("VERY THIN PAGES");
+        System.out.println("=========================================");
+
+        for (ReportEntry entry : entries) {
+            if (entry.getStatus().equals("VERY THIN")) {
+                System.out.println("- " + entry.getUrl());
+            }
+        }
+
+        System.out.println();
+
+        System.out.println("=========================================");
+        System.out.println("THIN CONTENT PAGES");
+        System.out.println("=========================================");
+
+        for (ReportEntry entry : entries) {
+            if (entry.getStatus().equals("THIN CONTENT")) {
+                System.out.println(entry.getUrl());
+            }
+        }
     }
 
 }

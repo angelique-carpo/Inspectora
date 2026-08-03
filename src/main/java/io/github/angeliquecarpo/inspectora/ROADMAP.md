@@ -11,19 +11,14 @@
 - [x] ReportGenerator
 - [x] Single-fetch analysis flow
 - [x] Refactored crawler architecture
-
----
-
-## 🚧 In Progress
-
-- [ ] UrlProvider
-- [ ] SitemapReader
+- [x] UrlProvider
+- [x] SitemapReader
+- [x] XML sitemap support
 
 ---
 
 ## 📋 Next Steps
 
-- [ ] XML sitemap support
 - [ ] Sitemap index support (`sitemap_index.xml`)
 - [ ] robots.txt sitemap discovery
 - [ ] HTML sitemap fallback
@@ -38,11 +33,20 @@
 
 ## ✅ Current Version
 
-v0.5
+v0.6
 
 ---
 
 ## 📜 Changelog
+
+### v0.6
+
+- Introduced UrlProvider
+- Added SitemapReader
+- Added XML sitemap support
+- Decoupled URL discovery from SiteCrawler
+- Refactored SiteCrawler to consume URL providers
+- Improved reporting with page grouping by content quality
 
 ### v0.5
 
@@ -57,7 +61,7 @@ v0.5
 ## 🎯 Version 1.0 Goal
 
 - Accept any website URL
-- Automatically discover sitemaps
+- Automatically discover and process sitemaps
 - Crawl the entire website
 - Analyze content quality
 - Perform basic SEO checks
