@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1f605dd-d861-444a-a5dd-1ae31c44d7b5" name="Changes" comment="refactor: redesign crawler architecture with single-fetch analysis flow">
+    <list default="true" id="a1f605dd-d861-444a-a5dd-1ae31c44d7b5" name="Changes" comment="feat: add XML sitemap support and improve reporting">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/app/InspectoraApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/app/InspectoraApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/HtmlFetcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/HtmlFetcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/SiteCrawler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/SiteCrawler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/SitemapReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/SitemapReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/UrlProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/UrlProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/report/ReportGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/report/ReportGenerator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +116,15 @@
       <option name="project" value="LOCAL" />
       <updated>1785231566561</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="feat: add XML sitemap support and improve reporting">
+      <option name="closed" value="true" />
+      <created>1785750714670</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1785750714670</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -139,7 +142,8 @@
     <MESSAGE value="feat: add reporting system with ReportGenerator" />
     <MESSAGE value="docs: create development roadmap" />
     <MESSAGE value="refactor: redesign crawler architecture with single-fetch analysis flow" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: redesign crawler architecture with single-fetch analysis flow" />
+    <MESSAGE value="feat: add XML sitemap support and improve reporting" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add XML sitemap support and improve reporting" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -13,9 +13,20 @@ public class SitemapReader {
 
         Document document = fetcher.fetch(sitemapUrl);
 
+        if (isSitemapIndex(document)){
+            for (Element sitemap : document.select("sitemap")){
+                String childSitemap = sitemap.select("loc").text();
+                urls.addAll(getUrls(childSitemap));
+            }
+            return urls;
+        }
+
         for (Element element : document.select("loc")){
             urls.add(element.text());
         }
         return urls;
+    }
+    private boolean isSitemapIndex(Document document){
+        return !document.select("sitemap").isEmpty();
     }
 }
