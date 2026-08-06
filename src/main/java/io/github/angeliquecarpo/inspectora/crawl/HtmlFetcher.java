@@ -15,7 +15,8 @@ public class HtmlFetcher {
         try{
             document = connection.get();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Failed to fetch: " + url);
+            return null;
         }
 
         return document;

@@ -22,6 +22,10 @@ public class SiteCrawler {
         for (String currentUrl : urls) {
             Document currentDocument = fetcher.fetch(currentUrl);
 
+            if (currentDocument == null){
+                continue;
+            }
+
             int wordCount = analyzer.countWords(currentDocument);
             int imageCount = analyzer.countImages(currentDocument);
 

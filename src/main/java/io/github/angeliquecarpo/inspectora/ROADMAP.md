@@ -15,6 +15,7 @@
 - [x] SitemapReader
 - [x] XML sitemap support
 - [x] Recursive sitemap index support (`sitemap_index.xml`)
+- [x] Graceful handling of HTTP errors during crawling
 
 ---
 
@@ -45,6 +46,7 @@ v0.7
 - Added SitemapReader
 - Added XML sitemap support
 - Added recursive sitemap index support
+- Added graceful HTTP error handling
 - Decoupled URL discovery from SiteCrawler
 - Refactored SiteCrawler to consume URL providers
 - Improved reporting with page grouping by content quality
@@ -62,7 +64,7 @@ v0.7
 ## 🎯 Version 1.0 Goal
 
 - Accept any website URL
-- Automatically discover and process sitemaps
+- Automatically discover website URLs
 - Crawl the entire website
 - Analyze content quality
 - Perform basic SEO checks

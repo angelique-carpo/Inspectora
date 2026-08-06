@@ -45,7 +45,7 @@ public class ReportGenerator {
         System.out.println("=========================================");
         System.out.println();
         System.out.println("Total pages  : " + entries.size());
-        System.out.println("OK           :" +  okCount);
+        System.out.println("OK           : " +  okCount);
         System.out.println("THIN CONTENT : " + thinCount);
         System.out.println("VERY THIN    : " + veryThinCount);
         System.out.println("EMPTY        : " + emptyCount);
