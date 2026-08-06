@@ -15,6 +15,16 @@ public class UrlProvider {
             SitemapReader sitemapReader = new SitemapReader();
             return sitemapReader.getUrls(sitemap);
         }
+
+        RobotsReader robotsReader = new RobotsReader();
+
+        String robotsSitemap = robotsReader.getSitemapUrl(website);
+
+        if (robotsSitemap !=null){
+            SitemapReader sitemapReader = new SitemapReader();
+            return sitemapReader.getUrls(robotsSitemap);
+        }
+
         InternalCrawler internalCrawler = new InternalCrawler();
         return internalCrawler.getUrls(website);
     }

@@ -34,6 +34,10 @@ public class InternalCrawler {
 
             Document currentDocument = fetcher.fetch(currentUrl);
 
+            if (currentDocument == null) {
+                continue;
+            }
+
             for (Element link : currentDocument.select("a")) {
 
                 String nextUrl = link.attr("abs:href");

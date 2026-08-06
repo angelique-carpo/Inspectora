@@ -12,7 +12,7 @@ public class InspectoraApplication {
 
         SiteCrawler crawler = new SiteCrawler();
 
-        List<ReportEntry> reportEntries = crawler.crawl("https://backlinko.com");
+        List<ReportEntry> reportEntries = crawler.crawl("https://www.alamaras.gr");
 
         System.out.println("Total pages: " + reportEntries.size());
 

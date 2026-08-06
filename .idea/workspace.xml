@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1f605dd-d861-444a-a5dd-1ae31c44d7b5" name="Changes" comment="feat: support recursive XML sitemap indexes">
+    <list default="true" id="a1f605dd-d861-444a-a5dd-1ae31c44d7b5" name="Changes" comment="feat: add graceful HTTP error handling">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/ROADMAP.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/ROADMAP.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/app/InspectoraApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/app/InspectoraApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/HtmlFetcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/HtmlFetcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/SiteCrawler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/SiteCrawler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/report/ReportGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/report/ReportGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/InternalCrawler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/InternalCrawler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/UrlProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/UrlProvider.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +136,15 @@
       <option name="project" value="LOCAL" />
       <updated>1785846432529</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="feat: add graceful HTTP error handling">
+      <option name="closed" value="true" />
+      <created>1786008729948</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1786008729948</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -156,7 +164,8 @@
     <MESSAGE value="refactor: redesign crawler architecture with single-fetch analysis flow" />
     <MESSAGE value="feat: add XML sitemap support and improve reporting" />
     <MESSAGE value="feat: support recursive XML sitemap indexes" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: support recursive XML sitemap indexes" />
+    <MESSAGE value="feat: add graceful HTTP error handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add graceful HTTP error handling" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -168,7 +177,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/InternalCrawler.java</url>
-          <line>65</line>
+          <line>69</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
