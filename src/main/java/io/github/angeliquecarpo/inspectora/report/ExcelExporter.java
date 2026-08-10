@@ -81,6 +81,7 @@ public class ExcelExporter {
             header.createCell(2).setCellValue("Status");
             header.createCell(3).setCellValue("H1");
             header.createCell(4).setCellValue("ALT");
+            header.createCell(5).setCellValue("META DESCRIPTION");
 
             int rowNumber = 11;
 
@@ -144,6 +145,24 @@ public class ExcelExporter {
             );
             altNoImagesStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 
+            CellStyle metaDescriptionOkStyle = workbook.createCellStyle();
+            metaDescriptionOkStyle.setFillForegroundColor(
+                    IndexedColors.LIGHT_GREEN.getIndex()
+            );
+            metaDescriptionOkStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+            CellStyle metaDescriptionMissingStyle = workbook.createCellStyle();
+            metaDescriptionMissingStyle.setFillForegroundColor(
+                    IndexedColors.RED.getIndex()
+            );
+            metaDescriptionMissingStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+            CellStyle metaDescriptionEmptyStyle = workbook.createCellStyle();
+            metaDescriptionEmptyStyle.setFillForegroundColor(
+                    IndexedColors.ORANGE.getIndex()
+            );
+            metaDescriptionEmptyStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
             for (ReportEntry entry : entries){
 
                 Row row = sheet.createRow(rowNumber++);
@@ -175,6 +194,9 @@ public class ExcelExporter {
                 Cell altCell = row.createCell(4);
                 altCell.setCellValue(entry.getAltStatus());
 
+                Cell metaDescriptionCell = row.createCell(5);
+                metaDescriptionCell.setCellValue(entry.getMetaDescriptionStatus());
+
                 switch (entry.getAltStatus()) {
 
                     case "OK":
@@ -187,6 +209,21 @@ public class ExcelExporter {
 
                     case "NO IMAGES":
                         altCell.setCellStyle(altNoImagesStyle);
+                        break;
+                }
+
+                switch (entry.getMetaDescriptionStatus()) {
+
+                    case "OK":
+                        metaDescriptionCell.setCellStyle(metaDescriptionOkStyle);
+                        break;
+
+                    case "MISSING":
+                        metaDescriptionCell.setCellStyle(metaDescriptionMissingStyle);
+                        break;
+
+                    case "EMPTY":
+                        metaDescriptionCell.setCellStyle(metaDescriptionEmptyStyle);
                         break;
                 }
 
@@ -216,7 +253,7 @@ public class ExcelExporter {
                             10,
                             rowNumber - 1,
                             0,
-                            4
+                            5
                     )
             );
 
@@ -227,6 +264,7 @@ public class ExcelExporter {
             sheet.setColumnWidth(2, 20 * 256);
             sheet.setColumnWidth(3, 15 * 256);
             sheet.setColumnWidth(4, 15 * 256);
+            sheet.setColumnWidth(5, 25 * 256);
 
             try (FileOutputStream outputStream = new FileOutputStream(fileName)){
                 workbook.write(outputStream);

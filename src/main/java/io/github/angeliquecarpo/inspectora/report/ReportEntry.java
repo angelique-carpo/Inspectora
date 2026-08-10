@@ -7,14 +7,16 @@ public class ReportEntry {
     private final String status;
     private final String h1Status;
     private final String altStatus;
+    private final String metaDescriptionStatus;
 
     public ReportEntry(String url, int wordCount, String status,
-                       String h1Status, String altStatus) {
+                       String h1Status, String altStatus, String metaDescriptionStatus) {
         this.url = url;
         this.wordCount = wordCount;
         this.status = status;
         this.h1Status = h1Status;
         this.altStatus = altStatus;
+        this.metaDescriptionStatus = metaDescriptionStatus;
     }
 
     public String getUrl() {
@@ -35,5 +37,9 @@ public class ReportEntry {
 
     public String getAltStatus() {
         return altStatus;
+    }
+
+    public String getMetaDescriptionStatus(){
+        return metaDescriptionStatus;
     }
 }
