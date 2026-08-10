@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1f605dd-d861-444a-a5dd-1ae31c44d7b5" name="Changes" comment="feat: discover sitemaps through robots.txt">
+    <list default="true" id="a1f605dd-d861-444a-a5dd-1ae31c44d7b5" name="Changes" comment="feat: add HTML sitemap fallback">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/ROADMAP.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/ROADMAP.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/UrlProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/UrlProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/app/InspectoraApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/app/InspectoraApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/InternalCrawler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/InternalCrawler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/SiteCrawler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/SiteCrawler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +151,15 @@
       <option name="project" value="LOCAL" />
       <updated>1786019299064</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="feat: add HTML sitemap fallback">
+      <option name="closed" value="true" />
+      <created>1786353446205</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1786353446205</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -171,20 +181,16 @@
     <MESSAGE value="feat: support recursive XML sitemap indexes" />
     <MESSAGE value="feat: add graceful HTTP error handling" />
     <MESSAGE value="feat: discover sitemaps through robots.txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: discover sitemaps through robots.txt" />
+    <MESSAGE value="feat: add HTML sitemap fallback" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add HTML sitemap fallback" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/SiteCrawler.java</url>
-          <line>38</line>
+          <line>44</line>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/InternalCrawler.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

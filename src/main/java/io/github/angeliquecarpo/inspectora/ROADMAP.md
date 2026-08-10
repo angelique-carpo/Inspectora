@@ -18,12 +18,13 @@
 - [x] Graceful handling of HTTP errors during crawling
 - [x] robots.txt sitemap discovery
 - [x] HTML sitemap fallback
+- [x] Homepage crawl fallback
+- [x] Non-HTML resource filtering
 
 ---
 
 ## 📋 Next Steps
 
-- [ ] Homepage crawl fallback
 - [ ] Excel export
 - [ ] H1 Analyzer
 - [ ] ALT Analyzer
@@ -50,6 +51,9 @@ v0.7
 - Added robots.txt sitemap discovery
 - Added HTML sitemap fallback
 - Added HtmlSitemapReader
+- Added homepage crawl fallback
+- Added shared non-HTML resource filtering
+- Prevented analysis of non-HTML resources from sitemaps
 - Decoupled URL discovery from SiteCrawler
 - Refactored SiteCrawler to consume URL providers
 - Improved reporting with page grouping by content quality

@@ -13,6 +13,8 @@ public class InternalCrawler {
 
     private final HtmlFetcher fetcher = new HtmlFetcher();
 
+    private final ResourceFilter resourceFilter = new ResourceFilter();
+
     public Set<String> getUrls(String website) {
 
         Queue<String> urlsToVisit = new LinkedList<>();
@@ -46,11 +48,18 @@ public class InternalCrawler {
                     continue;
                 }
 
-                if (isNonHtmlResource(nextUrl)) {
+                if (resourceFilter.isNonHtmlResource(nextUrl)) {
                     continue;
                 }
 
-                if (!nextUrl.startsWith(baseUrl)) {
+                URI nextUri = URI.create(nextUrl);
+                URI websiteUri = URI.create(website);
+
+                if (nextUri.getHost() == null) {
+                    continue;
+                }
+
+                if (!nextUri.getHost().equals(websiteUri.getHost())) {
                     continue;
                 }
 
@@ -61,34 +70,6 @@ public class InternalCrawler {
         }
 
         return visitedUrls;
-    }
-
-    private boolean isNonHtmlResource(String url) {
-
-        String lowerUrl = url.toLowerCase();
-
-        return lowerUrl.endsWith(".jpg")
-                || lowerUrl.endsWith(".jpeg")
-                || lowerUrl.endsWith(".png")
-                || lowerUrl.endsWith(".gif")
-                || lowerUrl.endsWith(".webp")
-                || lowerUrl.endsWith(".svg")
-                || lowerUrl.endsWith(".bmp")
-                || lowerUrl.endsWith(".ico")
-                || lowerUrl.endsWith(".pdf")
-                || lowerUrl.endsWith(".doc")
-                || lowerUrl.endsWith(".docx")
-                || lowerUrl.endsWith(".xls")
-                || lowerUrl.endsWith(".xlsx")
-                || lowerUrl.endsWith(".ppt")
-                || lowerUrl.endsWith(".pptx")
-                || lowerUrl.endsWith(".zip")
-                || lowerUrl.endsWith(".rar")
-                || lowerUrl.endsWith(".7z")
-                || lowerUrl.endsWith(".css")
-                || lowerUrl.endsWith(".js")
-                || lowerUrl.endsWith(".json")
-                || lowerUrl.endsWith(".xml");
     }
 
     private String extractBaseUrl(String url) {

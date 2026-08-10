@@ -16,10 +16,16 @@ public class SiteCrawler {
 
         HtmlFetcher fetcher = new HtmlFetcher();
         ContentAnalyzer analyzer = new ContentAnalyzer();
+        ResourceFilter resourceFilter = new ResourceFilter();
 
         List<ReportEntry> reportEntries = new ArrayList<>();
 
         for (String currentUrl : urls) {
+
+            if (resourceFilter.isNonHtmlResource(currentUrl)){
+                continue;
+            }
+
             Document currentDocument = fetcher.fetch(currentUrl);
 
             if (currentDocument == null){
