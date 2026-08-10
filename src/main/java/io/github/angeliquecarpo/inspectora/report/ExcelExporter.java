@@ -79,6 +79,8 @@ public class ExcelExporter {
             header.createCell(0).setCellValue("URL");
             header.createCell(1).setCellValue("Word Count");
             header.createCell(2).setCellValue("Status");
+            header.createCell(3).setCellValue("H1");
+            header.createCell(4).setCellValue("ALT");
 
             int rowNumber = 11;
 
@@ -106,6 +108,42 @@ public class ExcelExporter {
             );
             emptyStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 
+            CellStyle h1OkStyle = workbook.createCellStyle();
+            h1OkStyle.setFillForegroundColor(
+                    IndexedColors.LIGHT_GREEN.getIndex()
+            );
+            h1OkStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+            CellStyle h1MissingStyle = workbook.createCellStyle();
+            h1MissingStyle.setFillForegroundColor(
+                    IndexedColors.RED.getIndex()
+            );
+            h1MissingStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+            CellStyle h1MultipleStyle = workbook.createCellStyle();
+            h1MultipleStyle.setFillForegroundColor(
+                    IndexedColors.ORANGE.getIndex()
+            );
+            h1MultipleStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+            CellStyle altOkStyle = workbook.createCellStyle();
+            altOkStyle.setFillForegroundColor(
+                    IndexedColors.LIGHT_GREEN.getIndex()
+            );
+            altOkStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+            CellStyle altMissingStyle = workbook.createCellStyle();
+            altMissingStyle.setFillForegroundColor(
+                    IndexedColors.RED.getIndex()
+            );
+            altMissingStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+            CellStyle altNoImagesStyle = workbook.createCellStyle();
+            altNoImagesStyle.setFillForegroundColor(
+                    IndexedColors.GREY_25_PERCENT.getIndex()
+            );
+            altNoImagesStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
             for (ReportEntry entry : entries){
 
                 Row row = sheet.createRow(rowNumber++);
@@ -115,6 +153,42 @@ public class ExcelExporter {
 
                 Cell statusCell = row.createCell(2);
                 statusCell.setCellValue(entry.getStatus());
+
+                Cell h1Cell = row.createCell(3);
+                h1Cell.setCellValue(entry.getH1Status());
+
+                switch (entry.getH1Status()) {
+
+                    case "OK":
+                        h1Cell.setCellStyle(h1OkStyle);
+                        break;
+
+                    case "MISSING":
+                        h1Cell.setCellStyle(h1MissingStyle);
+                        break;
+
+                    case "MULTIPLE":
+                        h1Cell.setCellStyle(h1MultipleStyle);
+                        break;
+                }
+
+                Cell altCell = row.createCell(4);
+                altCell.setCellValue(entry.getAltStatus());
+
+                switch (entry.getAltStatus()) {
+
+                    case "OK":
+                        altCell.setCellStyle(altOkStyle);
+                        break;
+
+                    case "MISSING":
+                        altCell.setCellStyle(altMissingStyle);
+                        break;
+
+                    case "NO IMAGES":
+                        altCell.setCellStyle(altNoImagesStyle);
+                        break;
+                }
 
                 switch (entry.getStatus()) {
 
@@ -142,7 +216,7 @@ public class ExcelExporter {
                             10,
                             rowNumber - 1,
                             0,
-                            2
+                            4
                     )
             );
 
@@ -151,6 +225,8 @@ public class ExcelExporter {
             sheet.setColumnWidth(0, 80 * 256);
             sheet.setColumnWidth(1, 15 * 256);
             sheet.setColumnWidth(2, 20 * 256);
+            sheet.setColumnWidth(3, 15 * 256);
+            sheet.setColumnWidth(4, 15 * 256);
 
             try (FileOutputStream outputStream = new FileOutputStream(fileName)){
                 workbook.write(outputStream);

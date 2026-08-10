@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1f605dd-d861-444a-a5dd-1ae31c44d7b5" name="Changes" comment="feat: add HTML sitemap fallback">
+    <list default="true" id="a1f605dd-d861-444a-a5dd-1ae31c44d7b5" name="Changes" comment="fix: filter non-html resources before analysis">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/ROADMAP.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/ROADMAP.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/app/InspectoraApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/app/InspectoraApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/InternalCrawler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/InternalCrawler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/SiteCrawler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/SiteCrawler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +35,9 @@
     &quot;accountId&quot;: &quot;c674dc71-de73-40da-819a-26125568f4d0&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="autoscrollToSource" value="true" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -159,7 +159,15 @@
       <option name="project" value="LOCAL" />
       <updated>1786353446205</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="fix: filter non-html resources before analysis">
+      <option name="closed" value="true" />
+      <created>1786363718210</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1786363718210</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -182,14 +190,15 @@
     <MESSAGE value="feat: add graceful HTTP error handling" />
     <MESSAGE value="feat: discover sitemaps through robots.txt" />
     <MESSAGE value="feat: add HTML sitemap fallback" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add HTML sitemap fallback" />
+    <MESSAGE value="fix: filter non-html resources before analysis" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: filter non-html resources before analysis" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/io/github/angeliquecarpo/inspectora/crawl/SiteCrawler.java</url>
-          <line>44</line>
+          <line>60</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
