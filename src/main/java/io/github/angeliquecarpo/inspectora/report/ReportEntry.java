@@ -8,15 +8,17 @@ public class ReportEntry {
     private final String h1Status;
     private final String altStatus;
     private final String metaDescriptionStatus;
+    private final int seoScore;
 
     public ReportEntry(String url, int wordCount, String status,
-                       String h1Status, String altStatus, String metaDescriptionStatus) {
+                       String h1Status, String altStatus, String metaDescriptionStatus, int seoScore) {
         this.url = url;
         this.wordCount = wordCount;
         this.status = status;
         this.h1Status = h1Status;
         this.altStatus = altStatus;
         this.metaDescriptionStatus = metaDescriptionStatus;
+        this.seoScore = seoScore;
     }
 
     public String getUrl() {
@@ -41,5 +43,9 @@ public class ReportEntry {
 
     public String getMetaDescriptionStatus(){
         return metaDescriptionStatus;
+    }
+
+    public int getSeoScore(){
+        return seoScore;
     }
 }

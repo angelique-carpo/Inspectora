@@ -25,25 +25,37 @@
 - [x] Excel status coloring
 - [x] Excel filtering
 - [x] Excel frozen table header
+- [x] H1 Analyzer
+- [x] ALT Analyzer
+- [x] Meta Description Analyzer
+- [x] SEO Score
+- [x] SEO Score coloring
 
 ---
 
 ## 📋 Next Steps
 
-- [ ] H1 Analyzer
-- [ ] ALT Analyzer
-- [ ] Meta Description Analyzer
-- [ ] SEO Score
+- [ ] Improve Excel report formatting
+- [ ] Add overall website SEO summary
+- [ ] Improve SEO scoring rules
 
 ---
 
 ## ✅ Current Version
 
-v0.8
+v0.9
 
 ---
 
 ## 📜 Changelog
+
+### v0.9
+
+- Added H1 analysis
+- Added ALT analysis
+- Added meta description analysis
+- Added SEO scoring
+- Added SEO score visualization in Excel
 
 ### v0.8
 

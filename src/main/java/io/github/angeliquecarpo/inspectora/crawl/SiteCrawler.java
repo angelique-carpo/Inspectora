@@ -4,6 +4,7 @@ import io.github.angeliquecarpo.inspectora.analysis.ContentAnalyzer;
 import io.github.angeliquecarpo.inspectora.analysis.H1Analyzer;
 import io.github.angeliquecarpo.inspectora.analysis.AltAnalyzer;
 import io.github.angeliquecarpo.inspectora.analysis.MetaDescriptionAnalyzer;
+import io.github.angeliquecarpo.inspectora.analysis.SeoScoreAnalyzer;
 import io.github.angeliquecarpo.inspectora.report.ReportEntry;
 import org.jsoup.nodes.Document;
 
@@ -20,10 +21,12 @@ public class SiteCrawler {
 
         HtmlFetcher fetcher = new HtmlFetcher();
         ContentAnalyzer analyzer = new ContentAnalyzer();
+        ResourceFilter resourceFilter = new ResourceFilter();
+
         H1Analyzer h1Analyzer = new H1Analyzer();
         AltAnalyzer altAnalyzer = new AltAnalyzer();
         MetaDescriptionAnalyzer metaDescriptionAnalyzer = new MetaDescriptionAnalyzer();
-        ResourceFilter resourceFilter = new ResourceFilter();
+        SeoScoreAnalyzer seoScoreAnalyzer = new SeoScoreAnalyzer();
 
         List<ReportEntry> reportEntries = new ArrayList<>();
 
@@ -48,13 +51,21 @@ public class SiteCrawler {
             String metaDescriptionStatus = metaDescriptionAnalyzer.analyze(currentDocument);
             String altStatus = altAnalyzer.analyze(currentDocument);
 
+            int seoScore = seoScoreAnalyzer.calculateScore(
+                    status,
+                    h1Status,
+                    altStatus,
+                    metaDescriptionStatus
+            );
+
             ReportEntry entry = new ReportEntry(
                     currentUrl,
                     wordCount,
                     status,
                     h1Status,
                     altStatus,
-                    metaDescriptionStatus
+                    metaDescriptionStatus,
+                    seoScore
             );
 
             reportEntries.add(entry);

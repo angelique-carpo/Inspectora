@@ -82,6 +82,7 @@ public class ExcelExporter {
             header.createCell(3).setCellValue("H1");
             header.createCell(4).setCellValue("ALT");
             header.createCell(5).setCellValue("META DESCRIPTION");
+            header.createCell(6).setCellValue("SEO SCORE");
 
             int rowNumber = 11;
 
@@ -163,6 +164,30 @@ public class ExcelExporter {
             );
             metaDescriptionEmptyStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 
+            CellStyle seoGoodStyle = workbook.createCellStyle();
+            seoGoodStyle.setFillForegroundColor(
+                    IndexedColors.LIGHT_GREEN.getIndex()
+            );
+            seoGoodStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+            CellStyle seoNeedsImprovementStyle = workbook.createCellStyle();
+            seoNeedsImprovementStyle.setFillForegroundColor(
+                    IndexedColors.ORANGE.getIndex()
+            );
+            seoNeedsImprovementStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+            CellStyle seoPoorStyle = workbook.createCellStyle();
+            seoPoorStyle.setFillForegroundColor(
+                    IndexedColors.RED.getIndex()
+            );
+            seoPoorStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+            CellStyle seoCriticalStyle = workbook.createCellStyle();
+            seoCriticalStyle.setFillForegroundColor(
+                    IndexedColors.DARK_RED.getIndex()
+            );
+            seoCriticalStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
             for (ReportEntry entry : entries){
 
                 Row row = sheet.createRow(rowNumber++);
@@ -196,6 +221,22 @@ public class ExcelExporter {
 
                 Cell metaDescriptionCell = row.createCell(5);
                 metaDescriptionCell.setCellValue(entry.getMetaDescriptionStatus());
+
+                Cell seoScoreCell = row.createCell(6);
+                seoScoreCell.setCellValue(entry.getSeoScore());
+
+                if (entry.getSeoScore() >= 80) {
+                    seoScoreCell.setCellStyle(seoGoodStyle);
+
+                } else if (entry.getSeoScore() >= 60) {
+                    seoScoreCell.setCellStyle(seoNeedsImprovementStyle);
+
+                } else if (entry.getSeoScore() >= 40) {
+                    seoScoreCell.setCellStyle(seoPoorStyle);
+
+                } else {
+                    seoScoreCell.setCellStyle(seoCriticalStyle);
+                }
 
                 switch (entry.getAltStatus()) {
 
@@ -253,7 +294,7 @@ public class ExcelExporter {
                             10,
                             rowNumber - 1,
                             0,
-                            5
+                            6
                     )
             );
 
@@ -265,6 +306,7 @@ public class ExcelExporter {
             sheet.setColumnWidth(3, 15 * 256);
             sheet.setColumnWidth(4, 15 * 256);
             sheet.setColumnWidth(5, 25 * 256);
+            sheet.setColumnWidth(6, 15 * 256);
 
             try (FileOutputStream outputStream = new FileOutputStream(fileName)){
                 workbook.write(outputStream);
