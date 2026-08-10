@@ -17,12 +17,12 @@
 - [x] Recursive sitemap index support (`sitemap_index.xml`)
 - [x] Graceful handling of HTTP errors during crawling
 - [x] robots.txt sitemap discovery
+- [x] HTML sitemap fallback
 
 ---
 
 ## 📋 Next Steps
 
-- [ ] HTML sitemap fallback
 - [ ] Homepage crawl fallback
 - [ ] Excel export
 - [ ] H1 Analyzer
@@ -48,9 +48,12 @@ v0.7
 - Added recursive sitemap index support
 - Added graceful HTTP error handling
 - Added robots.txt sitemap discovery
+- Added HTML sitemap fallback
+- Added HtmlSitemapReader
 - Decoupled URL discovery from SiteCrawler
 - Refactored SiteCrawler to consume URL providers
 - Improved reporting with page grouping by content quality
+
 
 ### v0.6
 
