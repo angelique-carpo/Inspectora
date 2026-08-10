@@ -20,12 +20,16 @@
 - [x] HTML sitemap fallback
 - [x] Homepage crawl fallback
 - [x] Non-HTML resource filtering
+- [x] Excel export
+- [x] Excel report summary
+- [x] Excel status coloring
+- [x] Excel filtering
+- [x] Excel frozen table header
 
 ---
 
 ## 📋 Next Steps
 
-- [ ] Excel export
 - [ ] H1 Analyzer
 - [ ] ALT Analyzer
 - [ ] Meta Description Analyzer
@@ -35,11 +39,21 @@
 
 ## ✅ Current Version
 
-v0.7
+v0.8
 
 ---
 
 ## 📜 Changelog
+
+### v0.8
+
+- Added Excel report export
+- Added website information to Excel reports
+- Added summary statistics to Excel reports
+- Added status-based cell coloring
+- Added filtering to report tables
+- Added frozen table header
+- Improved Excel report usability
 
 ### v0.7
 
@@ -57,7 +71,6 @@ v0.7
 - Decoupled URL discovery from SiteCrawler
 - Refactored SiteCrawler to consume URL providers
 - Improved reporting with page grouping by content quality
-
 
 ### v0.6
 

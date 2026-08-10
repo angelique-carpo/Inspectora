@@ -1,5 +1,6 @@
 package io.github.angeliquecarpo.inspectora.app;
 import io.github.angeliquecarpo.inspectora.crawl.SiteCrawler;
+import io.github.angeliquecarpo.inspectora.report.ExcelExporter;
 import io.github.angeliquecarpo.inspectora.report.ReportEntry;
 import io.github.angeliquecarpo.inspectora.report.ReportGenerator;
 import java.util.List;
@@ -23,5 +24,12 @@ public class InspectoraApplication {
         }
 
         reportGenerator.printReport();
+
+        ExcelExporter excelExporter = new ExcelExporter();
+        excelExporter.export(
+                reportEntries,
+                "https://www.alamaras.gr/",
+                "alamaras-report.xlsx"
+        );
     }
 }
