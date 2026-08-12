@@ -20,13 +20,41 @@ public class ExcelExporter {
             Sheet sheet = workbook.createSheet("Report");
 
             Row titleRow = sheet.createRow(0);
-            titleRow.createCell(0).setCellValue("INSPECTORA REPORT");
+
+            Cell reportTitleCell = titleRow.createCell(0);
+            reportTitleCell.setCellValue("INSPECTORA REPORT");
+
+            CellStyle titleStyle = workbook.createCellStyle();
+
+            org.apache.poi.ss.usermodel.Font titleFont = workbook.createFont();
+            titleFont.setBold(true);
+            titleFont.setFontHeightInPoints((short) 16);
+
+            titleStyle.setFont(titleFont);
+
+            reportTitleCell.setCellStyle(titleStyle);
 
             Row siteRow = sheet.createRow(1);
             siteRow.createCell(0).setCellValue("Site: " + website);
 
             Row summaryTitleRow = sheet.createRow(3);
             summaryTitleRow.createCell(0).setCellValue("SUMMARY");
+
+            CellStyle summaryTitleStyle = workbook.createCellStyle();
+
+            summaryTitleStyle.setFillForegroundColor(
+                    IndexedColors.DARK_BLUE.getIndex()
+            );
+
+            summaryTitleStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+            org.apache.poi.ss.usermodel.Font summaryFont = workbook.createFont();
+            summaryFont.setBold(true);
+            summaryFont.setColor(IndexedColors.WHITE.getIndex());
+
+            summaryTitleStyle.setFont(summaryFont);
+
+            summaryTitleRow.getCell(0).setCellStyle(summaryTitleStyle);
 
             int totalPages = entries.size();
             int okPages = 0;
@@ -74,6 +102,28 @@ public class ExcelExporter {
             emptyRow.createCell(0).setCellValue("EMPTY");
             emptyRow.createCell(1).setCellValue(emptyPages);
 
+            CellStyle headerStyle = workbook.createCellStyle();
+
+            headerStyle.setFillForegroundColor(
+                    IndexedColors.DARK_BLUE.getIndex()
+            );
+
+            headerStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+            org.apache.poi.ss.usermodel.Font headerFont = workbook.createFont();
+            headerFont.setBold(true);
+            headerFont.setColor(IndexedColors.WHITE.getIndex());
+
+            headerStyle.setFont(headerFont);
+
+            headerStyle.setAlignment(
+                    org.apache.poi.ss.usermodel.HorizontalAlignment.CENTER
+            );
+
+            headerStyle.setVerticalAlignment(
+                    org.apache.poi.ss.usermodel.VerticalAlignment.CENTER
+            );
+
             Row header = sheet.createRow(10);
 
             header.createCell(0).setCellValue("URL");
@@ -86,6 +136,10 @@ public class ExcelExporter {
             header.createCell(7).setCellValue("INTERNAL LINKS");
             header.createCell(8).setCellValue("BROKEN LINKS");
             header.createCell(9).setCellValue("SEO SCORE");
+
+            for (Cell cell : header) {
+                cell.setCellStyle(headerStyle);
+            }
 
             int rowNumber = 11;
 

@@ -36,12 +36,12 @@
 - [x] Broken internal link detection
 - [x] Broken link status in Excel report
 - [x] Broken link status coloring
+- [x] Improve Excel report formatting
 
 ---
 
 ## 📋 Next Steps
 
-- [ ] Improve Excel report formatting
 - [ ] Add overall website SEO summary
 - [ ] Improve SEO scoring rules
 
@@ -49,7 +49,7 @@
 
 ## ✅ Current Version
 
-v0.10
+v0.11
 
 ---
 
