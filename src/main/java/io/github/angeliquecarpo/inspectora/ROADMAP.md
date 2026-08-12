@@ -30,6 +30,12 @@
 - [x] Meta Description Analyzer
 - [x] SEO Score
 - [x] SEO Score coloring
+- [x] Internal Link Analyzer
+- [x] Internal link status (OK / NO INTERNAL LINKS)
+- [x] Broken Internal Link Analyzer
+- [x] Broken internal link detection
+- [x] Broken link status in Excel report
+- [x] Broken link status coloring
 
 ---
 
@@ -43,11 +49,21 @@
 
 ## ✅ Current Version
 
-v0.9
+v0.10
 
 ---
 
 ## 📜 Changelog
+
+### v0.10
+
+- Added Internal Link Analyzer
+- Added internal link status reporting
+- Added Broken Internal Link Analyzer
+- Added broken internal link detection
+- Added broken link status to Excel reports
+- Added broken link status coloring in Excel
+- Preserved single-fetch analysis flow
 
 ### v0.9
 

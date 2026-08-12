@@ -8,16 +8,23 @@ public class ReportEntry {
     private final String h1Status;
     private final String altStatus;
     private final String metaDescriptionStatus;
+    private final String titleStatus;
+    private final String internalLinkStatus;
+    private final String brokenLinkStatus;
+
     private final int seoScore;
 
     public ReportEntry(String url, int wordCount, String status,
-                       String h1Status, String altStatus, String metaDescriptionStatus, int seoScore) {
+                       String h1Status, String altStatus, String metaDescriptionStatus, String titleStatus, String internalLinkStatus, String brokenLinkStatus, int seoScore) {
         this.url = url;
         this.wordCount = wordCount;
         this.status = status;
         this.h1Status = h1Status;
         this.altStatus = altStatus;
         this.metaDescriptionStatus = metaDescriptionStatus;
+        this.titleStatus = titleStatus;
+        this.internalLinkStatus = internalLinkStatus;
+        this.brokenLinkStatus = brokenLinkStatus;
         this.seoScore = seoScore;
     }
 
@@ -43,6 +50,18 @@ public class ReportEntry {
 
     public String getMetaDescriptionStatus(){
         return metaDescriptionStatus;
+    }
+
+    public String getTitleStatus(){
+        return titleStatus;
+    }
+
+    public String getInternalLinkStatus(){
+        return internalLinkStatus;
+    }
+
+    public String getBrokenLinkStatus(){
+        return brokenLinkStatus;
     }
 
     public int getSeoScore(){

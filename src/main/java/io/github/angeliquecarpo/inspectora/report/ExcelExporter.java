@@ -82,7 +82,10 @@ public class ExcelExporter {
             header.createCell(3).setCellValue("H1");
             header.createCell(4).setCellValue("ALT");
             header.createCell(5).setCellValue("META DESCRIPTION");
-            header.createCell(6).setCellValue("SEO SCORE");
+            header.createCell(6).setCellValue("TITLE");
+            header.createCell(7).setCellValue("INTERNAL LINKS");
+            header.createCell(8).setCellValue("BROKEN LINKS");
+            header.createCell(9).setCellValue("SEO SCORE");
 
             int rowNumber = 11;
 
@@ -164,10 +167,53 @@ public class ExcelExporter {
             );
             metaDescriptionEmptyStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 
+            CellStyle titleOkStyle = workbook.createCellStyle();
+            titleOkStyle.setFillForegroundColor(
+                    IndexedColors.LIGHT_GREEN.getIndex()
+            );
+            titleOkStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+            CellStyle titleMissingStyle = workbook.createCellStyle();
+            titleMissingStyle.setFillForegroundColor(
+                    IndexedColors.RED.getIndex()
+            );
+            titleMissingStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+            CellStyle titleEmptyStyle = workbook.createCellStyle();
+            titleEmptyStyle.setFillForegroundColor(
+                    IndexedColors.ORANGE.getIndex()
+            );
+            titleEmptyStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+            CellStyle brokenLinkOkStyle = workbook.createCellStyle();
+            brokenLinkOkStyle.setFillForegroundColor(
+                    IndexedColors.LIGHT_GREEN.getIndex()
+            );
+            brokenLinkOkStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+            CellStyle brokenLinkStyle = workbook.createCellStyle();
+            brokenLinkStyle.setFillForegroundColor(
+                    IndexedColors.RED.getIndex()
+            );
+            brokenLinkStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
             CellStyle seoGoodStyle = workbook.createCellStyle();
             seoGoodStyle.setFillForegroundColor(
                     IndexedColors.LIGHT_GREEN.getIndex()
             );
+
+            CellStyle titleTooShortStyle = workbook.createCellStyle();
+            titleTooShortStyle.setFillForegroundColor(
+                    IndexedColors.ROSE.getIndex()
+            );
+            titleTooShortStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+            CellStyle titleTooLongStyle = workbook.createCellStyle();
+            titleTooLongStyle.setFillForegroundColor(
+                    IndexedColors.ROSE.getIndex()
+            );
+
+            titleTooLongStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
             seoGoodStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 
             CellStyle seoNeedsImprovementStyle = workbook.createCellStyle();
@@ -178,13 +224,13 @@ public class ExcelExporter {
 
             CellStyle seoPoorStyle = workbook.createCellStyle();
             seoPoorStyle.setFillForegroundColor(
-                    IndexedColors.RED.getIndex()
+                    IndexedColors.ROSE.getIndex()
             );
             seoPoorStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 
             CellStyle seoCriticalStyle = workbook.createCellStyle();
             seoCriticalStyle.setFillForegroundColor(
-                    IndexedColors.DARK_RED.getIndex()
+                    IndexedColors.RED.getIndex()
             );
             seoCriticalStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 
@@ -222,7 +268,45 @@ public class ExcelExporter {
                 Cell metaDescriptionCell = row.createCell(5);
                 metaDescriptionCell.setCellValue(entry.getMetaDescriptionStatus());
 
-                Cell seoScoreCell = row.createCell(6);
+                Cell titleCell = row.createCell(6);
+                titleCell.setCellValue(entry.getTitleStatus());
+
+                switch (entry.getTitleStatus()) {
+
+                    case "OK":
+                        titleCell.setCellStyle(titleOkStyle);
+                        break;
+
+                    case "MISSING":
+                        titleCell.setCellStyle(titleMissingStyle);
+                        break;
+
+                    case "EMPTY":
+                        titleCell.setCellStyle(titleEmptyStyle);
+                        break;
+
+                    case "TOO SHORT":
+                        titleCell.setCellStyle(titleTooShortStyle);
+                        break;
+
+                    case "TOO LONG":
+                        titleCell.setCellStyle(titleTooLongStyle);
+                        break;
+                }
+
+                Cell internalLinkCell = row.createCell(7);
+                internalLinkCell.setCellValue(entry.getInternalLinkStatus());
+
+                Cell brokenLinkCell = row.createCell(8);
+                brokenLinkCell.setCellValue(entry.getBrokenLinkStatus());
+
+                if (entry.getBrokenLinkStatus().equals("NO BROKEN INTERNAL LINKS")) {
+                    brokenLinkCell.setCellStyle(brokenLinkOkStyle);
+                } else {
+                    brokenLinkCell.setCellStyle(brokenLinkStyle);
+                }
+
+                Cell seoScoreCell = row.createCell(9);
                 seoScoreCell.setCellValue(entry.getSeoScore());
 
                 if (entry.getSeoScore() >= 80) {
@@ -294,7 +378,7 @@ public class ExcelExporter {
                             10,
                             rowNumber - 1,
                             0,
-                            6
+                            9
                     )
             );
 
@@ -307,6 +391,9 @@ public class ExcelExporter {
             sheet.setColumnWidth(4, 15 * 256);
             sheet.setColumnWidth(5, 25 * 256);
             sheet.setColumnWidth(6, 15 * 256);
+            sheet.setColumnWidth(7, 20 * 256);
+            sheet.setColumnWidth(8, 25 * 256);
+            sheet.setColumnWidth(9, 15 * 256);
 
             try (FileOutputStream outputStream = new FileOutputStream(fileName)){
                 workbook.write(outputStream);

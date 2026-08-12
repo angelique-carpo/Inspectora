@@ -1,10 +1,6 @@
 package io.github.angeliquecarpo.inspectora.crawl;
 
-import io.github.angeliquecarpo.inspectora.analysis.ContentAnalyzer;
-import io.github.angeliquecarpo.inspectora.analysis.H1Analyzer;
-import io.github.angeliquecarpo.inspectora.analysis.AltAnalyzer;
-import io.github.angeliquecarpo.inspectora.analysis.MetaDescriptionAnalyzer;
-import io.github.angeliquecarpo.inspectora.analysis.SeoScoreAnalyzer;
+import io.github.angeliquecarpo.inspectora.analysis.*;
 import io.github.angeliquecarpo.inspectora.report.ReportEntry;
 import org.jsoup.nodes.Document;
 
@@ -27,6 +23,9 @@ public class SiteCrawler {
         AltAnalyzer altAnalyzer = new AltAnalyzer();
         MetaDescriptionAnalyzer metaDescriptionAnalyzer = new MetaDescriptionAnalyzer();
         SeoScoreAnalyzer seoScoreAnalyzer = new SeoScoreAnalyzer();
+        TitleAnalyzer titleAnalyzer = new TitleAnalyzer();
+        InternalLinkAnalyzer internalLinkAnalyzer = new InternalLinkAnalyzer();
+        BrokenLinkAnalyzer brokenLinkAnalyzer = new BrokenLinkAnalyzer(fetcher);
 
         List<ReportEntry> reportEntries = new ArrayList<>();
 
@@ -50,6 +49,9 @@ public class SiteCrawler {
             String h1Status = h1Analyzer.analyze(currentDocument);
             String metaDescriptionStatus = metaDescriptionAnalyzer.analyze(currentDocument);
             String altStatus = altAnalyzer.analyze(currentDocument);
+            String titleStatus = titleAnalyzer.analyze(currentDocument);
+            String internalLinkStatus = internalLinkAnalyzer.analyze(currentDocument, url);
+            String brokenLinkStatus = brokenLinkAnalyzer.analyze(currentDocument,url);
 
             int seoScore = seoScoreAnalyzer.calculateScore(
                     status,
@@ -65,6 +67,9 @@ public class SiteCrawler {
                     h1Status,
                     altStatus,
                     metaDescriptionStatus,
+                    titleStatus,
+                    internalLinkStatus,
+                    brokenLinkStatus,
                     seoScore
             );
 
